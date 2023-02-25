@@ -19,7 +19,22 @@ Route::get('/help','StaticPagesController@help')->name('help');
 
 Route::get('/about','StaticPagesController@about')->name('about');
 
+Route::get('/login','StaticPagesController@login')->name('login');
+
 
 Route::get('/signup','UsersController@create')->name('signup');
-Route::get('/login','StaticPagesController@login')->name('login');
+
+Route::resource('users','UsersController');
+/*
+resource方法接受两个参数，第一个参数为资源名称，第二个参数为控制器名称，上面代码等同于：
+
+Route::get('/users','UsersController@index')->name('users.index');
+Route::get('/users/create','UsersController@create')->name('users.create');
+Route::get('/users/{user}','UsersController@show')->name('users.show');
+Route::post('/users','UsersController@store')->name('users.store');
+Route::get('/users/{user}/edit','UsersController@edit')->name('users.edit');
+Route::patch('/users/{user}','UsersController@update')->name('users.update');
+Route::delete('/users/{user}','UsersController@destory')->name('users.destory');
+
+*/
 

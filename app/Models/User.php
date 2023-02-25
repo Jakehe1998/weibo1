@@ -43,4 +43,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*
+    * 生成用户头像
+    * 头像 size 默认值 100
+    * 通过 $this->attributes['email'] 获取用户邮箱
+    * 使用 trim 方法剔除邮箱前后空白内容
+    * 用 strtolower 方法将邮箱转换为小写
+    * 将转码后的邮箱与链接、尺寸拼接完整的 URL 并返回
+    */
+    public function gravatar ($size = '100')
+    {
+      $hash = md5 (strtolower(trim($this->attributes['email'])));
+      return "https://cdn.v2ex.com/gravatar/$hash?s=$size";
+    }
 }
