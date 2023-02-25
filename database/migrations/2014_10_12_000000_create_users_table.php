@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 运行迁移时调用
      * @return void
      */
     public function up()
@@ -26,7 +26,7 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     * 回滚迁移时调用
      * @return void
      */
     public function down()
