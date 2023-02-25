@@ -22,17 +22,17 @@
 
           <div class="mb-3">
             <label for="name">邮箱：</label>
-            <input type="text" name="email" class="form-control" value="{{ old('email') }}">
+            <input type="email" name="email" class="form-control" value="{{ old('email') }}">
           </div>
 
           <div class="mb-3">
             <label for="name">密码：</label>
-            <input type="text" name="password" class="form-control" value="{{ old('password') }}">
+            <input type="password" name="password" class="form-control" value="{{ old('password') }}">
           </div>
 
           <div class="mb-3">
             <label for="name">确认密码：</label>
-            <input type="text" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
+            <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
           </div>
 
           <button type="submit" class="btn btn-primary">注册</button>
