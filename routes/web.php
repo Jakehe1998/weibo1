@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* 静态页面 */
 Route::get('/','StaticPagesController@home')->name('home');
 
 Route::get('/help','StaticPagesController@help')->name('help');
 
 Route::get('/about','StaticPagesController@about')->name('about');
 
-Route::get('/login','StaticPagesController@login')->name('login');
-
-
+/* 注册页面 */
 Route::get('/signup','UsersController@create')->name('signup');
 
+/* 用户资源路由 */
 Route::resource('users','UsersController');
 /*
 resource方法接受两个参数，第一个参数为资源名称，第二个参数为控制器名称，上面代码等同于：
@@ -37,4 +37,11 @@ Route::patch('/users/{user}','UsersController@update')->name('users.update');
 Route::delete('/users/{user}','UsersController@destory')->name('users.destory');
 
 */
+
+/* 会话路由 */
+Route::get('login','SessionsController@create')->name('login');
+
+Route::post('login','SessionsController@store')->name('login');
+
+Route::delete('/logout','SessionsController@destroy')->name('logout');
 
