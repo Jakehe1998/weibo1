@@ -55,6 +55,6 @@ class User extends Authenticatable
     public function gravatar ($size = '100')
     {
       $hash = md5 (strtolower(trim($this->attributes['email'])));
-      return "https://cdn.v2ex.com/gravatar/$hash?s=$size";
+      return "https://sdn.geekzu.org/avatar/$hash?s=$size";
     }
 }
