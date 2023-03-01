@@ -8,6 +8,19 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+
+    public function __construct ()
+    {
+      // 第一个参数为中间键名称，第二个参数为要过滤的动作，
+      $this->middleware('auth',[
+        'except' => ['show','create','story'] // 非需登录操作
+      ]);
+
+      $this->middleware('guest',[
+        'only' => ['create'] // 只让未登录用户访问
+      ]);
+    }
+
     //
     public function create ()
     {
@@ -41,11 +54,13 @@ class UsersController extends Controller
 
     public function edit (User $user)
     {
+      $this->authorize('update', $user);
       return view('users.edit',compact('user'));
     }
 
     public function update(User $user, Request $request)
     {
+      $this->authorize('update', $user);
       $this->validate($request,[
         'name'=> 'required|max:50',
         'password'=> 'nullable|confirmed|min:6',
