@@ -13,7 +13,7 @@ class UsersController extends Controller
     {
       // 第一个参数为中间键名称，第二个参数为要过滤的动作，
       $this->middleware('auth',[
-        'except' => ['show','create','story'] // 非需登录操作
+        'except' => ['show','create','story','index'] // 非需登录操作
       ]);
 
       $this->middleware('guest',[
@@ -82,5 +82,12 @@ class UsersController extends Controller
       session()->flash('success', '个人资料更新成功');
       return redirect()->route('users.show',$user);
 
+    }
+
+    public function destroy(User $user) {
+      $this->authorize('destroy',$user);
+      $user->delete();
+      session()->flash('success','成功删除用户');
+      return back();
     }
 }
